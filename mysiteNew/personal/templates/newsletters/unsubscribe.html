@@ -1,0 +1,17 @@
+{% extends "personal/header.html" %}
+{% block content1 %}
+{% load static from staticfiles %}
+
+					<div class="newsletter">
+						<h3>Unsubscribe from Our Newsletter</h3>
+						<form method="POST">{% csrf_token %}
+							<div class="input-group">
+							{{ form }}
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">Unsubscribe</button>								
+							</span>
+							</div>
+						</form>
+					</div>
+
+{% endblock %}
