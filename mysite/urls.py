@@ -14,10 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.conf import settings
+from newsletters import views as myapp_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls), 
     url(r'^', include('personal.urls')),
-    url(r'^blog/', include('blog.urls')),
+    url(r'^contact/$', myapp_views.contact, name='contact'),
+    url(r'^newsletter/', include('newsletters.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
