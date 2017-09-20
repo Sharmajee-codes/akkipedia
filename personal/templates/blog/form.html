@@ -1,0 +1,27 @@
+{% extends "personal/header.html" %}
+{% block content %}
+{% load staticfiles %}
+
+<div class="contact">
+		
+		<div class="blog-form">
+			<h3>{{ current_url }}</h3>
+			<div class="in-center">
+				<form method='POST' action="" enctype='multipart/form-data'>{% csrf_token %}
+				{{ form.as_p }}
+				<br>	<br>	
+				<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+</div>
+		
+
+	
+	
+{% endblock %}
+
+
+
+
